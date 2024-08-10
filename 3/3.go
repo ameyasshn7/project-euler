@@ -34,16 +34,18 @@ func PollardsRho(n *big.Int) *big.Int {
 	y := big.NewInt(2)
 	d := big.NewInt(1)
 	one := big.NewInt(1)
-	c := big.NewInt(1) // Constant for f(x) = (x^2 + c) % n
+	c := big.NewInt(1) // Constant for f(x) = (x^2 + c) % n. (in this case c = 1)
 
 	for d.Cmp(one) == 0 {
 		// f(x) = (x^2 + c) % n
 		// x = f(x)
+		// tortoise
 		x.Mul(x, x)
 		x.Add(x, c)
 		x.Mod(x, n)
 
 		// y = f(f(y))
+		// hare
 		y.Mul(y, y)
 		y.Add(y, c)
 		y.Mod(y, n)
