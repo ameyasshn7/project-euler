@@ -85,6 +85,7 @@ func findLargest(n *big.Int) *big.Int {
 			return big.NewInt(largestPrime)
 		}
 
+		//Divide n by factor unless you cant do it anymore
 		for new(big.Int).Mod(n, factor).Cmp(big.NewInt(0)) == 0 {
 			n.Div(n, factor)
 		}
